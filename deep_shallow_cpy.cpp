@@ -7,6 +7,7 @@ private:
     int a, b;
 
 public:
+    // default constructor
     shallow()
     {
         cout << "object created here and shallow copy starts" << endl;
@@ -34,19 +35,20 @@ class Deep
 {
 private:
     int n, m;
-    int *k;
+    int *k; // pointer to int
 
 public:
+    // default constructor
     Deep()
     {
-        k = new int;
+        k = new int; //contains the reference to the heap in which int is stored
         cout << "object created and deep copy starts" << endl;
     }
     void setData(int i, int j, int l)
     {
         n = i;
         m = j;
-        *k = l;
+        *k = l; // value assigned to the pointer to k
     }
     void getData()
     {
@@ -55,11 +57,12 @@ public:
              << m << endl
              << *k << endl;
     }
+    // copy constructor
     Deep(Deep &temp)
     {
         n = temp.n;
         m = temp.m;
-        k = new int;
+        k = new int; // we are not just copying the value but a reference.
         *k = *(temp.k);
     }
 };
